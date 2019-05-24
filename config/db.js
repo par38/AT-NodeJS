@@ -1,4 +1,4 @@
-import mysql from 'mysql2';   // ES6 = const mysql = require('mysql2');
+const mysql = require('mysql2');
 
 require('dotenv').config()
 
