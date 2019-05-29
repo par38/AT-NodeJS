@@ -6,7 +6,9 @@ const Router = express.Router();
 // /http://localhost:8001/projets
 // * GET FrProjetsCardsAxios et FrProjetsCardsM
 // * main, small picture, city, title + ids (projets + media)
+// / attention : indiquer seulement '/', car s'ajoute à '/projets' de routes.js
 Router.get('/', (req, res) => {
+
   const projectsList = 'SELECT m.projects_id, m.alt, m.picture_small, p.id, p.city, p.title FROM media AS m JOIN projects AS p ON m.projects_id = p.id WHERE m.main = 1';
   connection.query(projectsList, (err, result) => {
     if (err) throw err;
