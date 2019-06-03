@@ -3,7 +3,7 @@ const connection = require('../config/db')
 
 const Router = express.Router();
 
-// /http://localhost:8001
+// /http://localhost:8001/api
 // + GET 
 // * image page home + alt
 Router.get('/', (req, res) => {
