@@ -12,13 +12,13 @@ Router.get('/:id(\\d{1,2})', (req, res) => {
 
   const projectLink = req.params.id;
   // . console.log(projectLink)
-  
+
   // const regexId = /[\s\\.,:;?!\-_€$]/gi;
   //const projectsTitle = idProject.toLowerCase().replace(regexId, "-").concat("/").concat(id)
   //const projectRedux = /\/\d{1,2}/
   //const projectId = idProject.slice(projectRedux)
-  
-  
+
+
 
   //connection.query(detailsProject, projectsTitle, (err, result) => {
   connection.query(detailsProject, projectLink, (err, result) => {
