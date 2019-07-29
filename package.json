@@ -4,8 +4,13 @@
   "description": "Atelier d'Architecture - Paris - Paolo TARABUSI",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "production": {
+    "use_env_variable": "DB_DATABASE",
+    "logging": false,
+    "operatorsAliases": false;
   },
   "keywords": [
     "architecte",
