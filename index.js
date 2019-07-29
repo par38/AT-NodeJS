@@ -1,31 +1,46 @@
-const http = require('http');
+const http = require('http')
 const path = require('path')
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
+const cors = require('cors')
+require('dotenv').config();
 
+// liste des routes
+const indexRoutes = require('./routes/indexRoutes')
 const app = express()
-
-//+const nomRoute = require('./routes/nom')
 
 // je configure l'application
 app.use(morgan('dev'))
-app.use(bodyParser.urlencoded({ extended: false }))
 
+app.use(cors())
+
+// permet d'utiliser req.body et req.params dans les routes
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
+//* je teste la partie API, en / (sans /api)  >> OK
+app.get("/", (req,res) => {
+  res.send("youhou");
+})
+
+// * VRAIE ROUTE
+app.use('/api', indexRoutes)
+
+//* dans le cas d'une route non trouvée, je retourne le code 404 'Not Found'
+app.use(function(req, res, next) {
+  var  err  =  new  Error('Not Found');
+  err.status  =  404;
+  next(err);
+});
+
+
+// Pour servir des fichiers statiques tels que les images, les fichiers CSS et les fichiers JavaScript, utilisez le MiddleWare intégré express.static dans Express.
+// Il est plus sûr d’utiliser le chemin d’accès absolu que vous voulez servir __dirname + :
 app.use(express.static(__dirname + '/public'))
 
-//+ app.use('/adresseBarreDeRecherche', nomRoute)
-//+ // où nomRoute a été importé
-
-// en cas de route non trouvée, code 404 'Not found'
-// app.use(function(req, res, next) {
-//   const err = new Error('Not Found')
-//   err.status = 404
-//   next(err)
-// })
-
 // serveur node
-let server = app.listen(process.env.PORT || 3030, function () {
-  console.log('Listening on port ' + server.address().port);        //*voir si pas PORT majuscule ?
+let server = app.listen(process.env.PORT || 8001, function () {
+  console.log('Listening on port ' + server.address().port);
 })

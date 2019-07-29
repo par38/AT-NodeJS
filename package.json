@@ -7,6 +7,13 @@
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords":[
+    "architecte",
+    "architecture",
+    "Paolo TARABUSI",
+    "Atelier TARABUSI"
+  ],
+  "repository": "https://github.com/par38/AT-NodeJS",
   "author": "Monica TARABUSI",
   "license": "MIT",
   "dependencies": {
