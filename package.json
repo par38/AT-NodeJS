@@ -1,6 +1,10 @@
 {
   "name": "back",
   "version": "1.0.0",
+  "engines": {
+    "npm": "6.x",
+    "node": "10.x"
+  },
   "description": "Atelier d'Architecture - Paris - Paolo TARABUSI",
   "main": "index.js",
   "scripts": {
