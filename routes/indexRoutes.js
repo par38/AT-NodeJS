@@ -7,7 +7,7 @@ const profilRouter = require('./profil')
 const contactRouter = require('./contact')
 const publicationsRouter = require('./publications')
 
-const authRouter = require('./BO/auth/auth')
+// + const authRouter = require('./BO/auth/auth')
 // + continuer routes
 
 
@@ -22,7 +22,7 @@ Router.use('/profil', profilRouter)
 Router.use('/contact', contactRouter)
 Router.use('/publications', publicationsRouter)
 
-Router.use('/auth', authRouter)
+// + Router.use('/auth', authRouter)
 // + continuer routes
 
 module.exports = Router;
