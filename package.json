@@ -10,7 +10,7 @@
   "production": {
     "use_env_variable": "DB_DATABASE",
     "logging": false,
-    "operatorsAliases": false;
+    "operatorsAliases": false
   },
   "keywords": [
     "architecte",
