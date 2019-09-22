@@ -8,7 +8,7 @@ const Router = express.Router()
 
 Router.get('/', (req, res) => {
   const contactData = 'SELECT company_name, address_street, address_city, tel, mail, linkedin FROM user WHERE id = 1;';
-  console.log(contactData)
+  // . console.log(contactData)
 
   connection.query(contactData, (err, result) => {
     if (err) throw err;
