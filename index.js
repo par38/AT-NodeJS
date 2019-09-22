@@ -12,16 +12,16 @@ const indexRoutes = require('./routes/indexRoutes')
 const app = express()
 
 // je configure l'application
-app.use(morgan('dev'))
+app.use(morgan('dev'))  // 'dev' permet de colorer les reponses
 
 app.use(cors())
 
 // permet d'utiliser req.body et req.params dans les routes
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //* je teste la partie API, en / (sans /api)  >> OK
-app.get("/", (req,res) => {
+app.get("/", (req, res) => {
   res.send("youhou");
 })
 
@@ -29,9 +29,9 @@ app.get("/", (req,res) => {
 app.use('/api', indexRoutes)
 
 //* dans le cas d'une route non trouvée, je retourne le code 404 'Not Found'
-app.use(function(req, res, next) {
-  var  err  =  new  Error('Not Found');
-  err.status  =  404;
+app.use(function (req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
   next(err);
 });
 
