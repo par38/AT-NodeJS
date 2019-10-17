@@ -9,7 +9,7 @@ const Router = express.Router();
 // / attention : indiquer seulement '/', car s'ajoute à '/projets' de routes.js
 Router.get('/', (req, res) => {
 
-  const projectsList = 'SELECT m.alt, m.picture_small, p.project_id, p.city, p.title FROM media AS m JOIN projects AS p ON m.projects_id = p.project_id WHERE m.main = 1 AND p.project_published = 1 ORDER BY p.project_order';
+  const projectsList = 'SELECT project_id, city, title, project_published, picture_small, alt FROM projects ORDER BY project_order';
 
   connection.query(projectsList, (err, result) => {
     if (err) throw err;
