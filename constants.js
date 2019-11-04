@@ -1,1 +1,1 @@
-exports.JWT_SIGN_SECRET = "reussirACrypterAvecHomer080";
+exports.JWT_SIGN_SECRET = "reussirACrypterAvecHomer";
