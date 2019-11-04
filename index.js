@@ -1,24 +1,24 @@
-const http = require('http')
-const path = require('path')
-
 const express = require('express')
-const bodyParser = require('body-parser')
+const app = express()
 const morgan = require('morgan')
+const bodyParser = require('body-parser')
 const cors = require('cors')
+
 require('dotenv').config();
 
 // liste des routes
 const indexRoutes = require('./routes/indexRoutes')
-const app = express()
+
+const passport = require('passport')
+require('./passport')
 
 // je configure l'application
+app.use(cors())
 app.use(morgan('dev'))  // 'dev' permet de colorer les reponses
 
-app.use(cors())
-
 // permet d'utiliser req.body et req.params dans les routes
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //* je teste la partie API, en / (sans /api)  >> OK
 app.get("/", (req, res) => {
@@ -27,6 +27,14 @@ app.get("/", (req, res) => {
 
 // * VRAIE ROUTE
 app.use('/api', indexRoutes)
+
+app.use("/bo/auth", require("./routes/auth"));
+
+app.use(
+  "/bo/profile",
+  passport.authenticate("jwt", { session: false }),
+  require("./routes/profile")
+);
 
 //* dans le cas d'une route non trouvée, je retourne le code 404 'Not Found'
 app.use(function (req, res, next) {

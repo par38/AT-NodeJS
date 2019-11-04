@@ -58,5 +58,8 @@ typings/
 .env
 !.env.sample
 
+# back/constants : JWT key
+constants
+
 # next.js build output
 .next
