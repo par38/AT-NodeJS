@@ -1,0 +1,1 @@
+exports.JWT_SIGN_SECRET = "reussirACrypterAvecHomer080";
